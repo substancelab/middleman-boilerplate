@@ -25,7 +25,7 @@ activate \
   :external_pipeline,
   :name => :webpack,
   :command => [webpack_command, webpack_options].join(" "),
-  :source => ".tmp/dist",
+  :source => ".tmp/webpack-build",
   :latency => 1
 
 # With alternative layout
