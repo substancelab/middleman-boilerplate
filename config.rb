@@ -15,11 +15,11 @@ page "/*.xml", :layout => false
 page "/*.json", :layout => false
 page "/*.txt", :layout => false
 
-webpack_command = "./node_modules/webpack/bin/webpack.js"
+webpack_command = "node_modules/webpack/bin/webpack.js"
 webpack_options = if build?
-  "--bail -p"
+  "--mode=production --bail -p"
 else
-  "--watch -d --progress --color"
+  "--mode=development --watch -d --progress --color"
 end
 activate \
   :external_pipeline,
