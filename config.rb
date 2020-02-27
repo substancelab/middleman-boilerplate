@@ -15,6 +15,19 @@ page "/*.xml", :layout => false
 page "/*.json", :layout => false
 page "/*.txt", :layout => false
 
+webpack_command = "./node_modules/webpack/bin/webpack.js"
+webpack_options = if build?
+  "--bail -p"
+else
+  "--watch -d --progress --color"
+end
+activate \
+  :external_pipeline,
+  :name => :webpack,
+  :command => [webpack_command, webpack_options].join(" "),
+  :source => ".tmp/dist",
+  :latency => 1
+
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
 
